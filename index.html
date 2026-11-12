@@ -3,27 +3,74 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>vrplayer · Blueprint A</title>
+  <title>vrplayer architecture</title>
   <style>
     :root { color-scheme: dark; }
     * { box-sizing: border-box; }
     html, body {
       margin: 0;
       padding: 0;
-      background: #0b0c0f;
+      background: #0f1218;
+      color: #a8b0bf;
+      font: 15px/1.45 "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;
+    }
+    main {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 28px 20px 64px;
+    }
+    h1 {
+      margin: 0 0 6px;
+      font-size: 22px;
+      font-weight: 650;
+      color: #e8edf5;
+      letter-spacing: -0.02em;
+    }
+    p.sub {
+      margin: 0 0 20px;
+      color: #7d8798;
+      font-size: 14px;
+    }
+    figure {
+      margin: 0 0 40px;
+    }
+    figcaption {
+      margin: 10px 0 0;
+      font-size: 13px;
+      color: #7d8798;
     }
     img {
       display: block;
       width: 100%;
       height: auto;
-      margin: 0;
       border: 0;
-      vertical-align: top;
+      background: #0f1218;
     }
+    a { color: #a8b0bf; }
   </style>
 </head>
 <body>
-  <img src="tech-stack-diagram.png" alt="vrplayer Blueprint A tech stack" width="1080" height="2680" />
-  <img src="architecture-diagram.png" alt="vrplayer architecture Blueprint A" width="1080" height="2480" />
+  <main>
+    <h1>vrplayer architecture</h1>
+    <p class="sub">Proposed Blueprint A · Unity shell + Kotlin Media3 over JNI · D26 pending</p>
+    <figure>
+      <img
+        src="architecture-diagram.png?v=20261112c4"
+        alt="vrplayer C4 container architecture: Quest 3 one-app process with Unity shell, JNI bridge, Kotlin Media3 decode, Horizon OS compositor"
+        width="1920"
+        height="1180"
+      />
+      <figcaption>Primary view · containers, trust boundaries, three flows (video / control / measure)</figcaption>
+    </figure>
+    <figure>
+      <img
+        src="tech-stack-diagram.png"
+        alt="vrplayer Blueprint A tech stack (secondary)"
+        width="1080"
+        height="2680"
+      />
+      <figcaption>Secondary · tech stack inventory</figcaption>
+    </figure>
+  </main>
 </body>
 </html>
