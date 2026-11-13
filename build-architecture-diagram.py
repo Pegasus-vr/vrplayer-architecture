@@ -2,6 +2,7 @@
 """vrplayer architecture — one-glance story poster (landscape).
 
 How a VR clip gets to your eyes: five numbered steps on one gold spine.
+Under each step: 1–2 short software-dev lines (not a C4 maze).
 Optional thin control (blue) and measure (green) notes stay subordinate.
 Blueprint A · Unity shell + Kotlin Media3 over JNI. No AVPro.
 """
@@ -178,13 +179,13 @@ def step_box(
     s.text(bx, by + 8, str(num), 22, C["gold"], weight=700, anchor="middle")
     # title
     s.text(x + 70, y + 50, title, 26, C["ink"], weight=700)
-    # body lines
-    ty = y + 92
+    # engineering lines (mono, short)
+    ty = y + 98
     for line in lines:
-        s.text(x + 28, ty, line, 17, C["dim"], weight=500)
-        ty += 28
+        s.text(x + 28, ty, line, 15, C["dim"], weight=500, mono=True)
+        ty += 30
     if note:
-        s.text(x + 28, y + h - 22, note, 14, note_color or C["warn"], weight=650, mono=True)
+        s.text(x + 28, y + h - 22, note, 13, note_color or C["warn"], weight=650, mono=True)
     return x, x + w, y + h / 2, x + w / 2
 
 
@@ -230,9 +231,8 @@ def build() -> None:
     s.text(1670, 66, "DECODE NEVER IN UNITY · NO AVPRO", 13, C["gold"], weight=700, anchor="middle", mono=True, ls=0.8)
 
     # ---- Five steps on one row ----
-    # Layout: 5 boxes with gold arrows between them
     margin_x = 48
-    gap = 28  # space for arrow between boxes
+    gap = 28
     n = 5
     usable = W - 2 * margin_x - (n - 1) * gap
     box_w = usable / n
@@ -240,21 +240,20 @@ def build() -> None:
     box_y = 200
     spine_y = box_y + box_h / 2
 
+    # Titles unchanged; under each: ≤2 short eng lines. Notes stay thin.
     steps = [
         {
             "title": "Video arrives",
             "lines": [
-                "Home server over Wi-Fi,",
-                "or a file already on",
-                "the Quest.",
+                "HTTP range / local URI",
+                "Sources module",
             ],
         },
         {
             "title": "Kotlin decodes",
             "lines": [
-                "Media3 drives hardware",
-                "decode (MediaCodec).",
-                "Not Unity. No AVPro.",
+                "Media3 ExoPlayer",
+                "MediaCodec HW surface",
             ],
             "note": "decode stays in Kotlin",
             "note_color": C["gold"],
@@ -262,16 +261,17 @@ def build() -> None:
         {
             "title": "Cross the bridge",
             "lines": [
-                "A surface / buffer",
-                "crosses the one JNI",
-                "seam into Unity.",
+                "AndroidJavaProxy",
+                "cmds + SurfaceTexture",
             ],
+            "note": "one seam",
+            "note_color": C["gold"],
         },
         {
             "title": "Unity places it",
             "lines": [
-                "Direct layer · 180/360.",
-                "Lens mesh · fisheye.",
+                "OpenXR layer / mesh",
+                "Projection resolver pick",
             ],
             "note": "mesh path · least proven",
             "note_color": C["warn"],
@@ -279,9 +279,8 @@ def build() -> None:
         {
             "title": "Eyes see it",
             "lines": [
-                "Meta compositor shows",
-                "the frame to both",
-                "displays.",
+                "Meta compositor",
+                "presented frames (probe ≠ compositor)",
             ],
         },
     ]
@@ -315,36 +314,58 @@ def build() -> None:
             marker="mg",
             glow=True,
         )
-        # tiny step connector label on first arrow only
         if i == 0:
             s.text(mid, spine_y - 14, "video", 12, C["gold"], weight=700, anchor="middle", mono=True)
 
-    # ---- Thin subordinate notes (not peers of the spine) ----
-    rail_y = box_y + box_h + 78
+    # ---- Thin workspace strip (how we build — not a second diagram) ----
+    strip_y = box_y + box_h + 36
+    s.rect(48, strip_y, W - 96, 44, fill=C["panel_hi"], stroke=C["line"], sw=1.2, rx=8)
+    s.text(
+        68,
+        strip_y + 28,
+        "WORKSPACE",
+        13,
+        C["muted"],
+        weight=700,
+        mono=True,
+        ls=1.0,
+    )
+    s.text(
+        178,
+        strip_y + 28,
+        "Assets/ Unity shell  ·  core/ vrplayer-core AAR (Media3)  ·  JNI bridge seam  ·  tools/ + .github CI",
+        15,
+        C["dim"],
+        weight=500,
+        mono=True,
+    )
+
+    # ---- Thin subordinate footnotes (not peers of the spine) ----
+    rail_y = strip_y + 88
     s.text(56, rail_y - 22, "SIDE NOTES · not the main story", 12, C["muted"], weight=700, mono=True, ls=1.2)
 
     c_y = rail_y + 14
     s.circle(68, c_y, 6, fill=C["bg"], stroke=C["control"], sw=2)
     s.path(f"M82 {c_y} H118", C["control"], 2.2, marker="mc")
-    s.text(130, c_y + 5, "Control", 16, C["control"], weight=700)
+    s.text(130, c_y + 5, "Control", 15, C["control"], weight=700)
     s.text(
         210,
         c_y + 5,
         "controllers → Unity shell → JNI → Kotlin playback",
-        16,
+        15,
         C["dim"],
         weight=500,
     )
 
-    m_y = rail_y + 52
+    m_y = rail_y + 48
     s.circle(68, m_y, 6, fill=C["bg"], stroke=C["measure"], sw=2)
     s.path(f"M82 {m_y} H118", C["measure"], 2.2, dash="2 5", marker="mm")
-    s.text(130, m_y + 5, "Measure", 16, C["measure"], weight=700)
+    s.text(130, m_y + 5, "Measure", 15, C["measure"], weight=700)
     s.text(
         220,
         m_y + 5,
-        "QA probe leaves the app → verification bench  ·  never from the compositor",
-        16,
+        "QA probe → verification bench  ·  never from the compositor",
+        15,
         C["dim"],
         weight=500,
     )
