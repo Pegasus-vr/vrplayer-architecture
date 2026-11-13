@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>vrplayer · user flow &amp; logic</title>
+  <title>vrplayer · user flow, logic &amp; stack</title>
   <style>
     :root { color-scheme: dark; }
     * { box-sizing: border-box; }
@@ -86,31 +86,13 @@
 </head>
 <body>
   <main>
-<<<<<<< HEAD
-    <h1>How a VR clip gets to your eyes</h1>
-    <p class="sub">Blueprint A · Unity shell + Kotlin Media3 over JNI</p>
-    <figure>
-      <img
-        src="architecture-diagram.png?v=20261113eng"
-        alt="How a VR clip gets to your eyes: five steps from file through Kotlin decode and JNI into Unity, then Meta compositor"
-        width="1920"
-        height="1080"
-      />
-      <figcaption>Primary · one gold path, five steps</figcaption>
-    </figure>
-    <p class="more">
-      Prefer containers and trust boundaries?
-      <a href="architecture-diagram-c4.png?v=20261113eng">Detailed C4 poster</a>
-      ·
-      <a href="tech-stack-diagram.png">Tech stack inventory</a>
-    </p>
-=======
     <h1>vrplayer</h1>
     <p class="sub">Proposed / H0 · Blueprint A · Unity shell + Kotlin Media3 over JNI</p>
 
     <nav class="tabs" aria-label="Views">
       <a href="#user-flow" class="active" data-tab="user-flow">User flow</a>
       <a href="#logic" data-tab="logic">Logic / behavior</a>
+      <a href="#tech-stack" data-tab="tech-stack">Tech stack</a>
       <a href="#clip-eyes" class="secondary" data-tab="clip-eyes">How a clip gets to your eyes</a>
     </nav>
 
@@ -138,6 +120,25 @@
       </figure>
     </section>
 
+    <section id="tech-stack">
+      <figure>
+        <img
+          src="tech-stack-diagram.png?v=20261113ts1"
+          alt="Tech stack inventory poster for Blueprint A: Unity shell, Kotlin Media3, sources, render paths, home server, CI"
+          width="1920"
+          height="1080"
+        />
+        <figcaption>Stack inventory · Blueprint A picks · see store docs/tech-stack-grid.md</figcaption>
+      </figure>
+      <p class="more">
+        Detail write-up lives in the project store as
+        <code>docs/tech-stack-grid.md</code>
+        (recommendations until owners lock ONTOLOGY D11).
+        Source SVG:
+        <a href="tech-stack-diagram.svg">tech-stack-diagram.svg</a>
+      </p>
+    </section>
+
     <section id="clip-eyes">
       <figure>
         <img
@@ -151,11 +152,8 @@
       <p class="more">
         Prefer containers and trust boundaries?
         <a href="architecture-diagram-c4.png?v=20261113eng">Detailed C4 poster</a>
-        ·
-        <a href="tech-stack-diagram.png">Tech stack inventory</a>
       </p>
     </section>
->>>>>>> pegasus/user-flow-logic-diagrams-856a
   </main>
   <script>
     (function () {
@@ -163,6 +161,7 @@
       var sections = {
         "user-flow": document.getElementById("user-flow"),
         "logic": document.getElementById("logic"),
+        "tech-stack": document.getElementById("tech-stack"),
         "clip-eyes": document.getElementById("clip-eyes")
       };
       function show(id) {

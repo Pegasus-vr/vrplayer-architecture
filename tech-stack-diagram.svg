@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="1080" height="2680" viewBox="0 0 1080 2680" role="img"
+  aria-label="vrplayer Blueprint A tech stack diagram">
+<title>vrplayer · Blueprint A · Tech stack</title>
+<defs>
+  <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+    <path d="M24 0H0V24" fill="none" stroke="#ffffff" stroke-opacity="0.03" stroke-width="1"/>
+  </pattern>
+  <radialGradient id="glow" cx="50%" cy="0%" r="70%">
+    <stop offset="0%" stop-color="#3db8ff" stop-opacity="0.10"/>
+    <stop offset="55%" stop-color="#0b0c0f" stop-opacity="0"/>
+  </radialGradient>
+  <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+    <feDropShadow dx="0" dy="0" stdDeviation="3" flood-color="#000" flood-opacity="0.35"/>
+  </filter>
+  <pattern id="hatch-0" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)">
+    <line x1="0" y1="0" x2="0" y2="8" stroke="#39ff88" stroke-opacity="0.20" stroke-width="1"/>
+  </pattern>
+  <pattern id="hatch-1" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)">
+    <line x1="0" y1="0" x2="0" y2="8" stroke="#3db8ff" stroke-opacity="0.20" stroke-width="1"/>
+  </pattern>
+  <pattern id="hatch-2" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)">
+    <line x1="0" y1="0" x2="0" y2="8" stroke="#b06bff" stroke-opacity="0.20" stroke-width="1"/>
+  </pattern>
+  <pattern id="hatch-3" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)">
+    <line x1="0" y1="0" x2="0" y2="8" stroke="#2ee6d6" stroke-opacity="0.20" stroke-width="1"/>
+  </pattern>
+  <pattern id="hatch-4" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)">
+    <line x1="0" y1="0" x2="0" y2="8" stroke="#7dff6b" stroke-opacity="0.20" stroke-width="1"/>
+  </pattern>
+  <pattern id="hatch-5" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)">
+    <line x1="0" y1="0" x2="0" y2="8" stroke="#4f8cff" stroke-opacity="0.20" stroke-width="1"/>
+  </pattern>
+  <pattern id="hatch-6" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)">
+    <line x1="0" y1="0" x2="0" y2="8" stroke="#ff6bcb" stroke-opacity="0.20" stroke-width="1"/>
+  </pattern>
+</defs>
+<rect width="1080" height="2680" fill="#0b0c0f"/>
+<rect width="1080" height="2680" fill="url(#grid)"/>
+<rect width="1080" height="2680" fill="url(#glow)"/>
+
+<g id="header" font-family="IBM Plex Sans, Segoe UI, Helvetica Neue, Arial, sans-serif">
+  <text x="36" y="58" fill="#9aa3b2" font-size="22"
+    font-family="IBM Plex Mono, ui-monospace, monospace"
+    letter-spacing="2.6" font-weight="700">VRPLAYER · BLUEPRINT A</text>
+  <rect x="366" y="32" rx="10" ry="10" width="220" height="38"
+    fill="rgba(232,197,106,0.12)" stroke="#e8c56a" stroke-width="1.6" stroke-dasharray="5 4"/>
+  <text x="476" y="57" text-anchor="middle" fill="#e8c56a" font-size="18"
+    font-family="IBM Plex Mono, ui-monospace, monospace" font-weight="700">D26 pending merge</text>
+  <text x="36" y="118" fill="#f4f5f7" font-size="54" font-weight="700" letter-spacing="-1">Tech stack</text>
+  <text x="36" y="166" fill="#c4cad6" font-size="26">
+    <tspan x="36" dy="0">Unity shell talks to Kotlin Media3 over JNI; Meta direct</tspan>
+    <tspan x="36" dy="34">compositor layer for equirect 180/360; Unity mesh path for fisheye.</tspan>
+  </text>
+</g>
+
+<g id="row-0" font-family="IBM Plex Sans, Segoe UI, Helvetica Neue, Arial, sans-serif">
+  <rect x="36" y="236" width="292" height="320" rx="16" ry="16"
+    fill="#12141a" stroke="#39ff88" stroke-width="2.5" filter="url(#soft)"/>
+  <rect x="36" y="236" width="292" height="320" rx="16" ry="16"
+    fill="#39ff88" fill-opacity="0.12"/>
+  <rect x="36" y="236" width="292" height="320" rx="16" ry="16" fill="url(#hatch-0)"/>
+  <text x="54" y="378.0" fill="#f4f5f7" font-size="26" font-weight="700">Interaction / shell</text>
+  <text x="54" y="408.0" fill="#9aa3b2" font-size="20"><tspan x="54" dy="0">controller-first UI</tspan><tspan x="54" dy="24">host</tspan></text>
+  <!-- stronger ByteByteGo dotted connector -->
+  <line x1="338" y1="396.0" x2="370" y2="396.0"
+    stroke="#9aa3b2" stroke-width="3.5" stroke-dasharray="4 9" stroke-linecap="round"/>
+  <rect x="380" y="236" width="664" height="320" rx="18" ry="18"
+    fill="#161922" stroke="#2a2f3a" stroke-width="1.8"/>
+
+  <image href="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjRkZGRkZGIiByb2xlPSJpbWciIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+VW5pdHk8L3RpdGxlPjxwYXRoIGQ9Im0xMi45Mjg4IDQuMjkzOSAzLjc5OTcgMi4xOTI5Yy4xMzY2LjA3Ny4xNDE1LjI5MDUgMCAuMzY3NWwtNC41MTUgMi42MDc2YS40MTkyLjQxOTIgMCAwIDEtLjQyNDYgMEw3LjI3NCA2Ljg1NDNjLS4xMzktLjA3NDUtLjE0MTUtLjI5MyAwLS4zNjc1bDMuNzk3Mi0yLjE5M1YwTDEuMzc1OCA1LjU5NzdWMTYuNzkzbDMuNzE3Ny0yLjE0NTZ2LTQuMzg1OGMtLjAwMjUtLjE1NjUuMTgxMy0uMjY4Mi4zMTgtLjE4MzhsNC41MTQ4IDIuNjA3NmEuNDI1Mi40MjUyIDAgMCAxIC4yMTM2LjM2NzZ2NS4yMTI3Yy4wMDI1LjE1NjUtLjE4MTMuMjY4Mi0uMzE3OS4xODM4bC0zLjc5OTYtMi4xOTI5LTMuNzE3OCAyLjE0NTdMMTIgMjRsOS42OTU0LTUuNTk3Ny0zLjcxNzgtMi4xNDU3LTMuNzk5NiAyLjE5MjljLS4xMzQxLjA4Mi0uMzIyOS0uMDI0OC0uMzE3OS0uMTgzOFYxMy4wNTNjMC0uMTU2NS4wODctLjI5NTYuMjEzNi0uMzY3Nmw0LjUxNDktMi42MDc2Yy4xMzQtLjA4Mi4zMjI4LjAyMjQuMzE3OS4xODM4djQuMzg1OGwzLjcxNzcgMi4xNDU2VjUuNTk3N0wxMi45Mjg4IDBaIi8+PC9zdmc+" x="468.0" y="354.0"
+    width="64" height="64" preserveAspectRatio="xMidYMid meet"/>
+  <text x="500.0" y="452.0" text-anchor="middle" fill="#f4f5f7"
+    font-size="22" font-weight="700"><tspan x="500.0" dy="0">Unity</tspan></text>
+
+  <image href="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAxMjM4IDM2My42IiB4bWw6c3BhY2U9InByZXNlcnZlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOmNjPSJodHRwOi8vY3JlYXRpdmVjb21tb25zLm9yZy9ucyMiIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj48dGl0bGU+T3BlblhSIGxvZ288L3RpdGxlPjxkZXNjPkFuIG9wZW4gc3RhbmRhcmQgZm9yIHZpcnR1YWwgcmVhbGl0eSBieSBLaHJvbm9zIEdyb3VwPC9kZXNjPjxtZXRhZGF0YT48cmRmOlJERj48Y2M6V29yayByZGY6YWJvdXQ9IiI+PGRjOmZvcm1hdD5pbWFnZS9zdmcreG1sPC9kYzpmb3JtYXQ+PGRjOnR5cGUgcmRmOnJlc291cmNlPSJodHRwOi8vcHVybC5vcmcvZGMvZGNtaXR5cGUvU3RpbGxJbWFnZSIvPjxkYzp0aXRsZS8+PC9jYzpXb3JrPjwvcmRmOlJERj48L21ldGFkYXRhPgo8ZyBpZD0idmxwYSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTk0Ljc4IC03MC4xNikiPgoJCgkJCgkJCTxwYXRoIGQ9Im0yODEgMjQzLjdjNC4yLTEyLjggMTAuNS0yNC4xIDE4LjgtMzQgOC40LTkuOCAxOC44LTE3LjcgMzEuMi0yMy42IDEyLjUtNS45IDI3LTguOCA0My41LTguOHMzMSAyLjkgNDMuNSA4LjggMjIuOSAxMy43IDMxLjIgMjMuNmM4LjQgOS44IDE0LjYgMjEuMiAxOC44IDM0czYuMyAyNi4xIDYuMyAzOS45LTIuMSAyNy4xLTYuMyAzOS45LTEwLjUgMjQuMS0xOC44IDM0Yy04LjQgOS44LTE4LjggMTcuNy0zMS4yIDIzLjQtMTIuNSA1LjgtMjcgOC43LTQzLjUgOC43cy0zMS0yLjktNDMuNS04LjctMjIuOS0xMy42LTMxLjItMjMuNGMtOC40LTkuOS0xNC42LTIxLjItMTguOC0zNHMtNi4zLTI2LjEtNi4zLTM5LjkgMi4xLTI3LjEgNi4zLTM5Ljl6bTI1LjUgNzAuM2MyLjcgMTAgNyAxOC45IDEyLjkgMjYuOSA1LjggOCAxMy4zIDE0LjQgMjIuNSAxOS4yczIwLjEgNy4yIDMyLjcgNy4yYzEyLjcgMCAyMy42LTIuNCAzMi43LTcuMiA5LjItNC44IDE2LjctMTEuMiAyMi41LTE5LjJzMTAuMS0xNi45IDEyLjktMjYuOWMyLjctMTAgNC4xLTIwLjEgNC4xLTMwLjNzLTEuNC0yMC4zLTQuMS0zMC4zLTctMTguOS0xMi45LTI2LjljLTUuOC04LTEzLjQtMTQuNC0yMi41LTE5LjItOS4yLTQuOC0yMC4xLTcuMy0zMi43LTcuMy0xMi43IDAtMjMuNiAyLjQtMzIuNyA3LjMtOS4yIDQuOC0xNi43IDExLjItMjIuNSAxOS4ycy0xMC4xIDE2LjktMTIuOSAyNi45Yy0yLjcgMTAtNC4xIDIwLTQuMSAzMC4zczEuMyAyMC4zIDQuMSAzMC4zeiIgZmlsbD0iIzc4MmQ4ZSIvPgoJCQoJCTxnIGZpbGw9IiM3ODJkOGUiPgoJCQk8cGF0aCBkPSJtNDkzLjggMjU2LjloMjF2MTcuM2gwLjVjMy41LTcuMSA4LjktMTIuMyAxNi4zLTE1LjVzMTUuNi00LjggMjQuNS00LjhjOS45IDAgMTguNSAxLjggMjUuOSA1LjQgNy4zIDMuNiAxMy40IDguNSAxOC4zIDE0LjdzOC41IDEzLjMgMTEgMjEuNCAzLjcgMTYuNyAzLjcgMjUuN2MwIDkuMS0xLjIgMTcuNy0zLjYgMjUuNy0yLjQgOC4xLTYgMTUuMS0xMC45IDIxLjItNC45IDYtMTEgMTAuOC0xOC4zIDE0LjQtNy4zIDMuNS0xNS45IDUuMy0yNS42IDUuMy0zLjMgMC02LjktMC4zLTEwLjYtMS0zLjgtMC43LTcuNi0xLjgtMTEuNC0zLjMtMy44LTEuNi03LjQtMy42LTEwLjgtNi4ycy02LjItNS43LTguNS05LjVoLTAuNXY2Ni4xaC0yMXptOTkuMSA2Mi45YzAtNS45LTAuOC0xMS44LTIuNC0xNy40LTEuNi01LjctNC0xMC44LTcuMi0xNS4yLTMuMi00LjUtNy4zLTgtMTIuNC0xMC42LTUtMi42LTEwLjktNC0xNy43LTQtNy4xIDAtMTMuMSAxLjQtMTguMSA0LjJzLTkgNi41LTEyLjEgMTEtNS40IDkuNy02LjggMTUuNS0yLjEgMTEuNi0yLjEgMTcuNmMwIDYuMyAwLjcgMTIuMyAyLjIgMTguMnMzLjggMTEgNy4xIDE1LjVjMy4yIDQuNSA3LjQgOCAxMi41IDEwLjggNS4xIDIuNyAxMS4zIDQuMSAxOC42IDQuMSA3LjEgMCAxMy4xLTEuNCAxOC4xLTQuMnM4LjktNi41IDExLjktMTEuMSA1LjEtOS45IDYuNC0xNS44YzEuMy02LjIgMi0xMi4zIDItMTguNnoiLz4KCQkJPHBhdGggZD0ibTc0Ni42IDM0NC4zYy0yLjggMTQuMi05IDI1LTE4LjYgMzIuNHMtMjEuNyAxMS4xLTM2LjIgMTEuMWMtMTAuMyAwLTE5LjEtMS43LTI2LjctNS4xLTcuNS0zLjQtMTMuOS04LTE5LTE0LTUuMS01LjktOS0xMy0xMS41LTIxLjMtMi42LTguMy00LTE3LjItNC4zLTI3IDAtOS42IDEuNS0xOC40IDQuNS0yNi42czcuMS0xNS4yIDEyLjUtMjEuMmM1LjQtNS45IDExLjctMTAuNiAxOS4xLTEzLjkgNy4zLTMuMyAxNS40LTUgMjQuMS01IDExLjQgMCAyMC44IDIuNCAyOC4zIDcuMXMxMy41IDEwLjcgMTguMSAxNy45YzQuNSA3LjMgNy43IDE1LjIgOS40IDIzLjhzMi40IDE2LjggMi4xIDI0LjVoLTk1LjhjLTAuMiA1LjYgMC41IDEwLjkgMiAxNiAxLjUgNSAzLjkgOS41IDcuMiAxMy40czcuNSA3IDEyLjYgOS4zIDExLjEgMy41IDE4LjEgMy41YzguNyAwIDE2LTIuMSAyMS44LTYuMnM5LjYtMTAuNCAxMS40LTE4LjhoMjAuOXptLTIwLjUtMzUuNmMtMC4zLTUtMS40LTkuNy0zLjMtMTQuMS0xLjktNC41LTQuNS04LjMtNy43LTExLjVzLTcuMS01LjgtMTEuNS03LjdjLTQuNS0xLjktOS4yLTIuOC0xNC40LTIuOC01LjQgMC0xMC40IDEtMTQuNyAyLjgtNC40IDEuOS04LjEgNC41LTExLjMgNy44LTMuMSAzLjMtNS42IDcuMS03LjQgMTEuNXMtMi45IDktMy4yIDE0eiIvPgoJCQk8cGF0aCBkPSJtNzY4LjYgMjU2LjloMTkuOHYyMC4zaDAuNWM0LjUtNy45IDEwLjItMTMuOCAxNy4yLTE3LjZzMTUuMS01LjcgMjQuNC01LjdjOC40IDAgMTUuNCAxLjIgMjEgMy41czEwLjEgNS41IDEzLjYgOS43YzMuNSA0LjEgNS45IDkgNy4zIDE0LjdzMi4xIDEyIDIuMSAxOC45djg0LjJoLTIxdi04Ni42YzAtNy45LTIuMy0xNC4yLTYuOS0xOC44cy0xMS02LjktMTkuMS02LjljLTYuNCAwLTEyIDEtMTYuNyAzcy04LjYgNC44LTExLjggOC40Yy0zLjEgMy42LTUuNSA3LjktNy4xIDEyLjctMS42IDQuOS0yLjQgMTAuMi0yLjQgMTZ2NzIuM2gtMjF2LTEyOC4xeiIvPgoJCQk8cGF0aCBkPSJtMTA5MCAxODEuOWgxMDkuNWM5LjEgMCAxNy4zIDEuNSAyNC42IDQuNHMxMy42IDcgMTguOCAxMi4xIDkuMiAxMS4xIDExLjkgMTcuOSA0LjEgMTQgNC4xIDIxLjZjMCAxMS45LTIuNSAyMi4zLTcuNSAzMXMtMTMuMiAxNS40LTI0LjYgMTkuOXYwLjZjNS41IDEuNSAxMCAzLjggMTMuNyA3IDMuNiAzLjEgNi41IDYuOSA4LjggMTEuMiAyLjMgNC40IDMuOSA5LjEgNSAxNC4xIDEgNSAxLjggMTAuMSAyLjEgMTUuMiAwLjIgMy4yIDAuNCA3IDAuNiAxMS40czAuNSA4LjggMSAxMy4yYzAuNSA0LjUgMS4yIDguOCAyLjMgMTIuOSAxIDQuMiAyLjYgNy43IDQuNyAxMC41aC00NC42Yy0xLjMtMy4yLTIuMy02LjgtMy0xMC43cy0xLjItOC0xLjctMTIuMmMtMC41LTQuMy0wLjktOC42LTEuMS0xMy4xLTAuMy00LjUtMC43LTguNy0xLjMtMTIuNy0xLjUtMTAuNi00LjctMTguNC05LjctMjMuMy00LjktNC45LTEzLTcuNC0yNC4yLTcuNGgtNDQuNnY3OS4zaC00NC42di0yMDIuOXptNDQuNyA5MS45aDQ4LjljMTAgMCAxNy43LTIuMyAyMi45LTYuOHM3LjgtMTEuOSA3LjgtMjIuMmMwLTkuOS0yLjYtMTctNy44LTIxLjVzLTEyLjgtNi43LTIyLjktNi43aC00OC45eiIvPgoJCTwvZz48ZyBmaWxsPSIjNzgyZDhlIj4KCQk8cGF0aCBkPSJtMjI1LjcgMjQ5LjljMjYuMy05My4xIDIxMi40LTEzNy41IDQxNS43LTk5LjIgMTIyIDIzIDIxNiA3NC4zIDI4Ni45IDEyMi42LTUzLjEtNzcuNC0xODcuMy0xNjkuMS0zNzMuMy0xOTQuNC0yMjIuMi0zMC4zLTQzNy4xIDIwLjMtNDU4LjUgMTE4LjUtMTUuNCA3MSA3NC40IDE0Ny45IDIwOS4yIDE5Ni4yLTYxLjgtNDQtOTMuNi05NS42LTgwLTE0My43eiIvPgoJCTxwb2x5Z29uIHBvaW50cz0iOTU1IDI4OC44IDg4Ny45IDM4NC45IDkzOC4zIDM4NC45IDk4My41IDMxOCAxMDI4IDM4NC45IDEwODEgMzg0LjkgMTAxNCAyODguOCIvPgoJCTxwYXRoIGQ9Im05NzMgMjczLjdoNDAuN2w2MS43LTkxLjhoLTQ4LjlsLTQwLjYgNjMuOWMtNjQuOS05Mi4yLTE2MC4zLTEyOS4yLTI0NS44LTE0MS41IDk5LjIgNDEuMiAxNzYuMSAxMDQgMjE1IDE2OS40eiIvPgoJCTwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMi43NjEpIiBmaWxsPSIjNzgyZDhlIj4KCQkJPHBvbHlnb24gcG9pbnRzPSIxMjgxIDM2MC4xIDEzMDIgMzYwLjEgMTMwMiAzNjUuNyAxMjk1IDM2NS43IDEyOTUgMzg1IDEyODggMzg1IDEyODggMzY1LjcgMTI4MSAzNjUuNyIvPgoJCQk8cG9seWdvbiBwb2ludHM9IjEzMzMgMzg1IDEzMjcgMzg1IDEzMjcgMzY2LjEgMTMyMiAzODUgMTMxNyAzODUgMTMxMSAzNjYuMSAxMzExIDM2Ni4xIDEzMTEgMzg1IDEzMDUgMzg1IDEzMDUgMzYwLjEgMTMxNSAzNjAuMSAxMzE5IDM3Ni43IDEzMTkgMzc2LjcgMTMyMyAzNjAuMSAxMzMzIDM2MC4xIi8+CgkJPC9nPgoJCjwvZz4KPC9zdmc+" x="657.0" y="366.0"
+    width="110" height="40" preserveAspectRatio="xMidYMid meet"/>
+  <text x="712.0" y="440.0" text-anchor="middle" fill="#f4f5f7"
+    font-size="22" font-weight="700"><tspan x="712.0" dy="0">OpenXR</tspan></text>
+
+  <image href="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMDA4MUZCIiByb2xlPSJpbWciIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+TWV0YTwvdGl0bGU+PHBhdGggZD0iTTYuOTE1IDQuMDNjLTEuOTY4IDAtMy42ODMgMS4yOC00Ljg3MSAzLjExM0MuNzA0IDkuMjA4IDAgMTEuODgzIDAgMTQuNDQ5YzAgLjcwNi4wNyAxLjM2OS4yMSAxLjk3M2E2LjYyNCA2LjYyNCAwIDAgMCAuMjY1Ljg2IDUuMjk3IDUuMjk3IDAgMCAwIC4zNzEuNzYxYy42OTYgMS4xNTkgMS44MTggMS45MjcgMy41OTMgMS45MjcgMS40OTcgMCAyLjYzMy0uNjcxIDMuOTY1LTIuNDQ0Ljc2LTEuMDEyIDEuMTQ0LTEuNjI2IDIuNjYzLTQuMzJsLjc1Ni0xLjMzOS4xODYtLjMyNWMuMDYxLjEuMTIxLjE5Ni4xODMuM2wyLjE1MiAzLjU5NWMuNzI0IDEuMjEgMS42NjUgMi41NTYgMi40NyAzLjMxNCAxLjA0Ni45ODcgMS45OTIgMS4yMiAzLjA2IDEuMjIgMS4wNzUgMCAxLjg3Ni0uMzU1IDIuNDU1LS44NDNhMy43NDMgMy43NDMgMCAwIDAgLjgxLS45NzNjLjU0Mi0uOTM5Ljg2MS0yLjEyNy44NjEtMy43NDUgMC0yLjcyLS42ODEtNS4zNTctMi4wODQtNy40NS0xLjI4Mi0xLjkxMi0yLjk1Ny0yLjkzLTQuNzE2LTIuOTMtMS4wNDcgMC0yLjA4OC40NjctMy4wNTMgMS4zMDgtLjY1Mi41Ny0xLjI1NyAxLjI5LTEuODIgMi4wNS0uNjktLjg3NS0xLjMzNS0xLjU0Ny0xLjk1OC0yLjA1Ni0xLjE4Mi0uOTY2LTIuMzE1LTEuMzAzLTMuNDU0LTEuMzAzem0xMC4xNiAyLjA1M2MxLjE0NyAwIDIuMTg4Ljc1OCAyLjk5MiAxLjk5OSAxLjEzMiAxLjc0OCAxLjY0NyA0LjE5NSAxLjY0NyA2LjQgMCAxLjU0OC0uMzY4IDIuOS0xLjgzOSAyLjktLjU4IDAtMS4wMjctLjIzLTEuNjY0LTEuMDA0LS40OTYtLjYwMS0xLjM0My0xLjg3OC0yLjgzMi00LjM1OGwtLjYxNy0xLjAyOGE0NC45MDggNDQuOTA4IDAgMCAwLTEuMjU1LTEuOThjLjA3LS4xMDkuMTQxLS4yMjQuMjExLS4zMjcgMS4xMi0xLjY2NyAyLjExOC0yLjYwMiAzLjM1OC0yLjYwMnptLTEwLjIwMS41NTNjMS4yNjUgMCAyLjA1OC43OTEgMi42NzUgMS40NDYuMzA3LjMyNy43MzcuODcxIDEuMjM0IDEuNTc5bC0xLjAyIDEuNTY2Yy0uNzU3IDEuMTYzLTEuODgyIDMuMDE3LTIuODM3IDQuMzM4LTEuMTkxIDEuNjQ5LTEuODEgMS44MTctMi40ODYgMS44MTctLjUyNCAwLTEuMDM4LS4yMzctMS4zODMtLjc5NC0uMjYzLS40MjYtLjQ2NC0xLjEzLS40NjQtMi4wNDYgMC0yLjIyMS42My00LjUzNSAxLjY2LTYuMDg4LjQ1NC0uNjg3Ljk2NC0xLjIyNiAxLjUzMy0xLjUzM2EyLjI2NCAyLjI2NCAwIDAgMSAxLjA4OC0uMjg1eiIvPjwvc3ZnPg==" x="892.0" y="354.0"
+    width="64" height="64" preserveAspectRatio="xMidYMid meet"/>
+  <text x="924.0" y="452.0" text-anchor="middle" fill="#f4f5f7"
+    font-size="22" font-weight="700"><tspan x="924.0" dy="0">Meta XR</tspan><tspan x="924.0" dy="24">Core SDK</tspan></text>
+</g>
+
+<g id="row-1" font-family="IBM Plex Sans, Segoe UI, Helvetica Neue, Arial, sans-serif">
+  <rect x="36" y="572" width="292" height="320" rx="16" ry="16"
+    fill="#12141a" stroke="#3db8ff" stroke-width="2.5" filter="url(#soft)"/>
+  <rect x="36" y="572" width="292" height="320" rx="16" ry="16"
+    fill="#3db8ff" fill-opacity="0.12"/>
+  <rect x="36" y="572" width="292" height="320" rx="16" ry="16" fill="url(#hatch-1)"/>
+  <text x="54" y="714.0" fill="#f4f5f7" font-size="26" font-weight="700">Projection / render</text>
+  <text x="54" y="744.0" fill="#9aa3b2" font-size="20"><tspan x="54" dy="0">resolver picks direct</tspan><tspan x="54" dy="24">vs mesh</tspan></text>
+  <!-- stronger ByteByteGo dotted connector -->
+  <line x1="338" y1="732.0" x2="370" y2="732.0"
+    stroke="#9aa3b2" stroke-width="3.5" stroke-dasharray="4 9" stroke-linecap="round"/>
+  <rect x="380" y="572" width="664" height="320" rx="18" ry="18"
+    fill="#161922" stroke="#2a2f3a" stroke-width="1.8"/>
+
+  <rect x="399.0" y="615.0" width="202.0" height="88" rx="14" ry="14"
+    fill="#0e1118" stroke="#3a4150" stroke-width="1.5"/>
+  <text x="411.0" y="649.0" fill="#f4f5f7" font-size="20" font-weight="700">OVROverlay</text>
+  <text x="411.0" y="679.0" fill="#9aa3b2" font-size="17">external-surface layer</text>
+
+  <rect x="611.0" y="615.0" width="202.0" height="88" rx="14" ry="14"
+    fill="#0e1118" stroke="#3a4150" stroke-width="1.5"/>
+  <text x="623.0" y="649.0" fill="#f4f5f7" font-size="20" font-weight="700">Unity URP</text>
+  <text x="623.0" y="679.0" fill="#9aa3b2" font-size="17">render pipeline</text>
+
+  <image href="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjQTQ3MEI2IiByb2xlPSJpbWciIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+VnVsa2FuPC90aXRsZT48cGF0aCBkPSJNMTMuNDExIDE1LjEyaC0uODc1di0yLjc5OGMuMjguMTU2LjY0OS40NDIuODc1LjcxOXptLTcuMzgzIDBINC45MzZsLTEuNDIzLTQuNGguOTkybC45NzkgMy4wOTNoLjAxM2wuOTkyLTMuMDkzaC45OTl6bTQuMzk0IDBoLS44MzN2LS40NDRoLS4wMTdjLS4xMTIuMTg1LS4yNTUuMzE5LS40MzIuNDAxcy0uMzU4LjEyMy0uNTQxLjEyM3EtLjM1MjUgMC0uNTc2LS4wOTNjLS4xNTEtLjA2My0uMjY3LS4xNDktLjM1NC0uMjYxLS4wODYtLjExMi0uMTQ2LS4yNS0uMTgxLS40MTItLjAzNC0uMTYyLS4wNTItLjM0My0uMDUyLS41Mzl2LTEuOTYxaC44NzZ2MS43OTljMCAuMjYzLjA0MS40NTkuMTIzLjU4OS4wODIuMTI5LjIyOS4xOTQuNDM4LjE5NC4yMzcgMCAuNDEtLjA3MS41MTgtLjIxNC4xMDctLjE0Mi4xNTktLjM3NS4xNTktLjY5OXYtMS42NjloLjg3NnptMy4xMzQtMS45MTgtLjAwMi0uMTIzIDEuMTA0LTEuMTQ3aDEuMDM1bC0xLjIwMSAxLjE3MSAxLjMzNyAyLjAxN2gtMS4wNjF6bTIuNDMzLS4yODljLjAxMy0uMjA1LjA2NS0uMzc1LjE1NS0uNTExLjA5MS0uMTM2LjIwNS0uMjQ0LjM0NS0uMzI2LjE0MS0uMDgyLjI5OC0uMTQuNDczLS4xNzQuMTc0LS4wMzUuMzQ5LS4wNTIuNTI2LS4wNTIuMTYgMCAuMzI0LjAxMS40ODcuMDM0LjE2NC4wMjQuMzE1LjA2Ny40NTEuMTMyLjEzNi4wNjcuMjQ2LjE1Ny4zMzIuMjc0LjA4Ny4xMTYuMTMuMjcyLjEzLjQ2NnYxLjY1OWMwIC4xNDQuMDA5LjI4Mi4wMjQuNDEyLjAxNy4xMzEuMDQ1LjIzLjA4Ni4yOTVoLS44ODljLS4wMTctLjA1LS4wMy0uMDk5LS4wNDEtLjE1MWExLjIgMS4yIDAgMCAxLS4wMjEtLjE1N2MtLjE0MS4xNDQtLjMwNC4yNDMtLjQ5NC4zMDItLjE5LjA1OC0uMzgyLjA4Ni0uNTgxLjA4Ni0uMTUxIDAtLjI5My0uMDItLjQyNC0uMDU2YS45OS45OSAwIDAgMS0uMzQ2LS4xNzNjLS4wOTktLjA3Ny0uMTc2LS4xNzctLjIzLS4yOTUtLjA1Ni0uMTE5LS4wODUtLjI2MS0uMDg1LS40MjUgMC0uMTgxLjAzMy0uMzMuMDk1LS40NDcuMDY1LS4xMTYuMTQ3LS4yMTEuMjQ2LS4yOC4xMDItLjA2OS4yMTYtLjEyMy4zNDUtLjE1OC4xMy0uMDM0LjI1OS0uMDYyLjM5MS0uMDg0LjEzMS0uMDE5LjI2MS0uMDM2LjM4OC0uMDQ5cy4yNC0uMDMxLjMzOS0uMDU2Yy4wOTktLjAyNC4xNzctLjA2MS4yMzUtLjEwOC4wNTgtLjA0OC4wODQtLjExNy4wOC0uMjA3IDAtLjA5NS0uMDE1LS4xNzEtLjA0OC0uMjI1YS4zMi4zMiAwIDAgMC0uMTIzLS4xMjkuNTEuNTEgMCAwIDAtLjE3OS0uMDYzYy0uMDY5LS4wMS0uMTQtLjAxNS0uMjE4LS4wMTUtLjE3MiAwLS4zMDguMDM3LS40MDcuMTEtLjEuMDc0LS4xNTYuMTk3LS4xNzMuMzY5em0yLjAyMS42NDdjLS4wMzcuMDMzLS4wODQuMDU5LS4xMzguMDc4YTEuMDQgMS4wNCAwIDAgMS0uMTc5LjA0NWMtLjA2NS4wMTMtLjEzLjAyMi0uMjAxLjAzMS0uMDY5LjAwOC0uMTQuMDE5LS4yMDkuMDNhMS43IDEuNyAwIDAgMC0uMTk0LjA0OWMtLjA2NS4wMjItLjExOS4wNDgtLjE2Ni4wODRhLjM5LjM5IDAgMCAwLS4xMTQuMTMyYy0uMDI5LjA1NC0uMDQ0LjEyMS0uMDQ0LjIwMyAwIC4wNzcuMDE1LjE0NC4wNDQuMTk2LjAyOC4wNTQuMDY5LjA5NS4xMTYuMTI3LjA1LjAzMS4xMDguMDUyLjE3My4wNjUuMDY0LjAxMy4xMzMuMDE5LjIwMi4wMTkuMTczIDAgLjMwNy0uMDI4LjQwMi0uMDg2LjA5NC0uMDU4LjE2My0uMTI3LjIwOS0uMjA3LjA0NS0uMDguMDczLS4xNjIuMDgyLS4yNDQuMDExLS4wODIuMDE1LS4xNDguMDE1LS4xOTZ6bTEuNDQzLTEuNjI4aC44MzN2LjQ0NGguMDE3Yy4xMS0uMTg1LjI1NC0uMzE5LjQzMS0uNDAzcy4zNTgtLjEyNy41NDItLjEyN2MuMjM1IDAgLjQyNy4wMzIuNTc2LjA5NC4xNDguMDY1LjI2Ny4xNTQuMzUzLjI2Ni4wODcuMTEyLjE0Ny4yNS4xODIuNDEyLjAzNC4xNjIuMDUxLjM0My4wNTEuNTM5djEuOTYxaC0uODc1di0xLjc5OWMwLS4yNjMtLjA0MS0uNDYtLjEyMy0uNTg5LS4wODItLjEzLS4yMjktLjE5NC0uNDM4LS4xOTQtLjI0IDAtLjQxLjA3MS0uNTE4LjIxMy0uMTA4LjE0My0uMTYuMzc2LS4xNi42OTl2MS42N2gtLjg3NXptLTguNDUxLS41NWMuMzAyLjE0OS41OTMuMzEuODc2LjQ4M3YzLjI1M2gtLjg3NnptLTguOTMuMTU5Yy0uMjYxLjc2OC4yMDMgMS42MzUgMS4xNTYgMi40MDgtMi4xMjItLjkxMS0zLjQ5Ni0yLjI0NC0zLjE4NC0zLjM4LjQzNC0xLjU3MyAzLjkzMi0yLjE3NyA3LjQ4MS0xLjQ5MSAzLjEzNi42MDYgNS40MTYgMi4zNzUgNS44ODQgMy42MTctMS4wMzUtLjkzNi0yLjYyMS0xLjg4My00LjU2Mi0yLjM3LTMuMjM1LS44MTYtNi4yNjgtLjI3LTYuNzc1IDEuMjE2bTExLjM0MS42MTNjLS4yMDctLjMyOC0uNTAyLS42NjctLjg3NS0xLjAwMXYtLjQzNmguODc1ek0yNCAxNC42NTJjMCAuMjY1LS4yMDcuNDcyLS40NzkuNDcyLS4yNjcgMC0uNDgxLS4yMDctLjQ4MS0uNDcyIDAtLjI1OS4yMTQtLjQ2Ni40ODEtLjQ2Ni4yNyAwIC40NzkuMjA3LjQ3OS40NjZtLS44MzkgMGMwIC4yMDcuMTUzLjM3My4zNjQuMzczLjIwNSAwIC4zNTYtLjE2NC4zNTYtLjM2OSAwLS4yMDctLjE1MS0uMzc1LS4zNTgtLjM3NS0uMjA5IDAtLjM2Mi4xNjYtLjM2Mi4zNzFtLjI4Ny4yNDZoLS4xMDh2LS40NjZjLjA0My0uMDA5LjEwMy0uMDE1LjE3OS0uMDE1LjA4OCAwIC4xMjcuMDE1LjE2Mi4wMzQuMDI2LjAyLjA0NS4wNTYuMDQ1LjEwNCAwIC4wNTItLjAzOS4wOS0uMDk3LjEwOHYuMDA2Yy4wNDUuMDE3LjA3MS4wNTIuMDg2LjExNC4wMTUuMDcyLjAyNC4xLjAzNS4xMTdoLS4xMTdjLS4wMTUtLjAxNy0uMDIzLS4wNjEtLjAzNi0uMTE0LS4wMDktLjA1Mi0uMDM3LS4wNzQtLjA5Ny0uMDc0aC0uMDUyem0uMDAyLS4yNjZoLjA1MmMuMDYgMCAuMTA4LS4wMTkuMTA4LS4wNjkgMC0uMDQzLS4wMzEtLjA3MS0uMS0uMDcxLS4wMjggMC0uMDQ3LjAwMi0uMDYuMDA3eiIvPjwvc3ZnPg==" x="892.0" y="617.0"
+    width="64" height="64" preserveAspectRatio="xMidYMid meet"/>
+  <text x="924.0" y="715.0" text-anchor="middle" fill="#f4f5f7"
+    font-size="20" font-weight="700"><tspan x="924.0" dy="0">Vulkan</tspan></text>
+
+  <rect x="403.0" y="761.0" width="300" height="88" rx="14" ry="14"
+    fill="#0e1118" stroke="#3a4150" stroke-width="1.5"/>
+  <text x="415.0" y="795.0" fill="#f4f5f7" font-size="24" font-weight="700">Equirect</text>
+  <text x="415.0" y="825.0" fill="#9aa3b2" font-size="20">direct layer · 180/360</text>
+
+  <rect x="721.0" y="761.0" width="300" height="88" rx="14" ry="14"
+    fill="#0e1118" stroke="#3a4150" stroke-width="1.5"/>
+  <text x="733.0" y="795.0" fill="#f4f5f7" font-size="24" font-weight="700">Fisheye mesh</text>
+  <text x="733.0" y="825.0" fill="#9aa3b2" font-size="20">190 / MKX200 · least proven</text>
+</g>
+
+<g id="row-2" font-family="IBM Plex Sans, Segoe UI, Helvetica Neue, Arial, sans-serif">
+  <rect x="36" y="908" width="292" height="320" rx="16" ry="16"
+    fill="#12141a" stroke="#b06bff" stroke-width="2.5" filter="url(#soft)"/>
+  <rect x="36" y="908" width="292" height="320" rx="16" ry="16"
+    fill="#b06bff" fill-opacity="0.12"/>
+  <rect x="36" y="908" width="292" height="320" rx="16" ry="16" fill="url(#hatch-2)"/>
+  <text x="54" y="1050.0" fill="#f4f5f7" font-size="26" font-weight="700">Playback</text>
+  <text x="54" y="1080.0" fill="#9aa3b2" font-size="20"><tspan x="54" dy="0">session + media clock</tspan><tspan x="54" dy="24">around Media3</tspan></text>
+  <!-- stronger ByteByteGo dotted connector -->
+  <line x1="338" y1="1068.0" x2="370" y2="1068.0"
+    stroke="#9aa3b2" stroke-width="3.5" stroke-dasharray="4 9" stroke-linecap="round"/>
+  <rect x="380" y="908" width="664" height="320" rx="18" ry="18"
+    fill="#161922" stroke="#2a2f3a" stroke-width="1.8"/>
+
+  <rect x="400.0" y="1022.0" width="200.0" height="92" rx="14" ry="14"
+    fill="#0e1118" stroke="#3a4150" stroke-width="1.5"/>
+  <text x="412.0" y="1056.0" fill="#f4f5f7" font-size="20" font-weight="700">Media3 ExoPlayer</text>
+  <text x="412.0" y="1086.0" fill="#9aa3b2" font-size="17">AndroidX media engine</text>
+
+  <rect x="612.0" y="1022.0" width="200.0" height="92" rx="14" ry="14"
+    fill="#0e1118" stroke="#3a4150" stroke-width="1.5"/>
+  <text x="624.0" y="1056.0" fill="#f4f5f7" font-size="20" font-weight="700">MediaCodec</text>
+  <text x="624.0" y="1086.0" fill="#9aa3b2" font-size="17">hardware decode only</text>
+
+  <image href="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjN0Y1MkZGIiByb2xlPSJpbWciIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+S290bGluPC90aXRsZT48cGF0aCBkPSJNMjQgMjRIMFYwaDI0TDEyIDEyWiIvPjwvc3ZnPg==" x="892.0" y="1026.0"
+    width="64" height="64" preserveAspectRatio="xMidYMid meet"/>
+  <text x="924.0" y="1124.0" text-anchor="middle" fill="#f4f5f7"
+    font-size="22" font-weight="700"><tspan x="924.0" dy="0">Kotlin</tspan></text>
+</g>
+
+<g id="row-3" font-family="IBM Plex Sans, Segoe UI, Helvetica Neue, Arial, sans-serif">
+  <rect x="36" y="1244" width="292" height="320" rx="16" ry="16"
+    fill="#12141a" stroke="#2ee6d6" stroke-width="2.5" filter="url(#soft)"/>
+  <rect x="36" y="1244" width="292" height="320" rx="16" ry="16"
+    fill="#2ee6d6" fill-opacity="0.12"/>
+  <rect x="36" y="1244" width="292" height="320" rx="16" ry="16" fill="url(#hatch-3)"/>
+  <text x="54" y="1394.0" fill="#f4f5f7" font-size="26" font-weight="700">Bridge</text>
+  <text x="54" y="1424.0" fill="#9aa3b2" font-size="20"><tspan x="54" dy="0">one JNI seam</tspan></text>
+  <!-- stronger ByteByteGo dotted connector -->
+  <line x1="338" y1="1404.0" x2="370" y2="1404.0"
+    stroke="#9aa3b2" stroke-width="3.5" stroke-dasharray="4 9" stroke-linecap="round"/>
+  <rect x="380" y="1244" width="664" height="320" rx="18" ry="18"
+    fill="#161922" stroke="#2a2f3a" stroke-width="1.8"/>
+
+  <rect x="403.0" y="1358.0" width="300" height="92" rx="14" ry="14"
+    fill="#0e1118" stroke="#3a4150" stroke-width="1.5"/>
+  <text x="415.0" y="1392.0" fill="#f4f5f7" font-size="24" font-weight="700">JNI</text>
+  <text x="415.0" y="1422.0" fill="#9aa3b2" font-size="20">Unity &lt;-&gt; Kotlin</text>
+
+  <rect x="721.0" y="1358.0" width="300" height="92" rx="14" ry="14"
+    fill="#0e1118" stroke="#3a4150" stroke-width="1.5"/>
+  <text x="733.0" y="1392.0" fill="#f4f5f7" font-size="24" font-weight="700">AndroidJavaProxy</text>
+  <text x="733.0" y="1422.0" fill="#9aa3b2" font-size="20">Unity-side Java callbacks</text>
+</g>
+
+<g id="row-4" font-family="IBM Plex Sans, Segoe UI, Helvetica Neue, Arial, sans-serif">
+  <rect x="36" y="1580" width="292" height="320" rx="16" ry="16"
+    fill="#12141a" stroke="#7dff6b" stroke-width="2.5" filter="url(#soft)"/>
+  <rect x="36" y="1580" width="292" height="320" rx="16" ry="16"
+    fill="#7dff6b" fill-opacity="0.12"/>
+  <rect x="36" y="1580" width="292" height="320" rx="16" ry="16" fill="url(#hatch-4)"/>
+  <text x="54" y="1722.0" fill="#f4f5f7" font-size="26" font-weight="700">Sources</text>
+  <text x="54" y="1752.0" fill="#9aa3b2" font-size="20"><tspan x="54" dy="0">local + home first ·</tspan><tspan x="54" dy="24">SMB later</tspan></text>
+  <!-- stronger ByteByteGo dotted connector -->
+  <line x1="338" y1="1740.0" x2="370" y2="1740.0"
+    stroke="#9aa3b2" stroke-width="3.5" stroke-dasharray="4 9" stroke-linecap="round"/>
+  <rect x="380" y="1580" width="664" height="320" rx="18" ry="18"
+    fill="#161922" stroke="#2a2f3a" stroke-width="1.8"/>
+
+  <rect x="403.0" y="1694.0" width="300" height="92" rx="14" ry="14"
+    fill="#0e1118" stroke="#3a4150" stroke-width="1.5"/>
+  <text x="415.0" y="1728.0" fill="#f4f5f7" font-size="24" font-weight="700">Local storage</text>
+  <text x="415.0" y="1758.0" fill="#9aa3b2" font-size="20">on-headset files</text>
+
+  <rect x="721.0" y="1694.0" width="300" height="92" rx="14" ry="14"
+    fill="#0e1118" stroke="#3a4150" stroke-width="1.5"/>
+  <text x="733.0" y="1728.0" fill="#f4f5f7" font-size="24" font-weight="700">Home server</text>
+  <text x="733.0" y="1758.0" fill="#9aa3b2" font-size="20">pairing · HTTP range · prefetch</text>
+</g>
+
+<g id="row-5" font-family="IBM Plex Sans, Segoe UI, Helvetica Neue, Arial, sans-serif">
+  <rect x="36" y="1916" width="292" height="320" rx="16" ry="16"
+    fill="#12141a" stroke="#4f8cff" stroke-width="2.5" filter="url(#soft)"/>
+  <rect x="36" y="1916" width="292" height="320" rx="16" ry="16"
+    fill="#4f8cff" fill-opacity="0.12"/>
+  <rect x="36" y="1916" width="292" height="320" rx="16" ry="16" fill="url(#hatch-5)"/>
+  <text x="54" y="2066.0" fill="#f4f5f7" font-size="26" font-weight="700">Platform</text>
+  <text x="54" y="2096.0" fill="#9aa3b2" font-size="20"><tspan x="54" dy="0">on-device runtime</tspan></text>
+  <!-- stronger ByteByteGo dotted connector -->
+  <line x1="338" y1="2076.0" x2="370" y2="2076.0"
+    stroke="#9aa3b2" stroke-width="3.5" stroke-dasharray="4 9" stroke-linecap="round"/>
+  <rect x="380" y="1916" width="664" height="320" rx="18" ry="18"
+    fill="#161922" stroke="#2a2f3a" stroke-width="1.8"/>
+
+  <rect x="403.0" y="2030.0" width="300" height="92" rx="14" ry="14"
+    fill="#0e1118" stroke="#3a4150" stroke-width="1.5"/>
+  <text x="415.0" y="2064.0" fill="#f4f5f7" font-size="24" font-weight="700">Horizon OS</text>
+  <text x="415.0" y="2094.0" fill="#9aa3b2" font-size="20">Meta Quest OS</text>
+
+  <image href="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMDA4MUZCIiByb2xlPSJpbWciIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+TWV0YTwvdGl0bGU+PHBhdGggZD0iTTYuOTE1IDQuMDNjLTEuOTY4IDAtMy42ODMgMS4yOC00Ljg3MSAzLjExM0MuNzA0IDkuMjA4IDAgMTEuODgzIDAgMTQuNDQ5YzAgLjcwNi4wNyAxLjM2OS4yMSAxLjk3M2E2LjYyNCA2LjYyNCAwIDAgMCAuMjY1Ljg2IDUuMjk3IDUuMjk3IDAgMCAwIC4zNzEuNzYxYy42OTYgMS4xNTkgMS44MTggMS45MjcgMy41OTMgMS45MjcgMS40OTcgMCAyLjYzMy0uNjcxIDMuOTY1LTIuNDQ0Ljc2LTEuMDEyIDEuMTQ0LTEuNjI2IDIuNjYzLTQuMzJsLjc1Ni0xLjMzOS4xODYtLjMyNWMuMDYxLjEuMTIxLjE5Ni4xODMuM2wyLjE1MiAzLjU5NWMuNzI0IDEuMjEgMS42NjUgMi41NTYgMi40NyAzLjMxNCAxLjA0Ni45ODcgMS45OTIgMS4yMiAzLjA2IDEuMjIgMS4wNzUgMCAxLjg3Ni0uMzU1IDIuNDU1LS44NDNhMy43NDMgMy43NDMgMCAwIDAgLjgxLS45NzNjLjU0Mi0uOTM5Ljg2MS0yLjEyNy44NjEtMy43NDUgMC0yLjcyLS42ODEtNS4zNTctMi4wODQtNy40NS0xLjI4Mi0xLjkxMi0yLjk1Ny0yLjkzLTQuNzE2LTIuOTMtMS4wNDcgMC0yLjA4OC40NjctMy4wNTMgMS4zMDgtLjY1Mi41Ny0xLjI1NyAxLjI5LTEuODIgMi4wNS0uNjktLjg3NS0xLjMzNS0xLjU0Ny0xLjk1OC0yLjA1Ni0xLjE4Mi0uOTY2LTIuMzE1LTEuMzAzLTMuNDU0LTEuMzAzem0xMC4xNiAyLjA1M2MxLjE0NyAwIDIuMTg4Ljc1OCAyLjk5MiAxLjk5OSAxLjEzMiAxLjc0OCAxLjY0NyA0LjE5NSAxLjY0NyA2LjQgMCAxLjU0OC0uMzY4IDIuOS0xLjgzOSAyLjktLjU4IDAtMS4wMjctLjIzLTEuNjY0LTEuMDA0LS40OTYtLjYwMS0xLjM0My0xLjg3OC0yLjgzMi00LjM1OGwtLjYxNy0xLjAyOGE0NC45MDggNDQuOTA4IDAgMCAwLTEuMjU1LTEuOThjLjA3LS4xMDkuMTQxLS4yMjQuMjExLS4zMjcgMS4xMi0xLjY2NyAyLjExOC0yLjYwMiAzLjM1OC0yLjYwMnptLTEwLjIwMS41NTNjMS4yNjUgMCAyLjA1OC43OTEgMi42NzUgMS40NDYuMzA3LjMyNy43MzcuODcxIDEuMjM0IDEuNTc5bC0xLjAyIDEuNTY2Yy0uNzU3IDEuMTYzLTEuODgyIDMuMDE3LTIuODM3IDQuMzM4LTEuMTkxIDEuNjQ5LTEuODEgMS44MTctMi40ODYgMS44MTctLjUyNCAwLTEuMDM4LS4yMzctMS4zODMtLjc5NC0uMjYzLS40MjYtLjQ2NC0xLjEzLS40NjQtMi4wNDYgMC0yLjIyMS42My00LjUzNSAxLjY2LTYuMDg4LjQ1NC0uNjg3Ljk2NC0xLjIyNiAxLjUzMy0xLjUzM2EyLjI2NCAyLjI2NCAwIDAgMSAxLjA4OC0uMjg1eiIvPjwvc3ZnPg==" x="839.0" y="2034.0"
+    width="64" height="64" preserveAspectRatio="xMidYMid meet"/>
+  <text x="871.0" y="2132.0" text-anchor="middle" fill="#f4f5f7"
+    font-size="22" font-weight="700"><tspan x="871.0" dy="0">Quest 3</tspan></text>
+</g>
+
+<g id="row-6" font-family="IBM Plex Sans, Segoe UI, Helvetica Neue, Arial, sans-serif">
+  <rect x="36" y="2252" width="292" height="320" rx="16" ry="16"
+    fill="#12141a" stroke="#ff6bcb" stroke-width="2.5" filter="url(#soft)"/>
+  <rect x="36" y="2252" width="292" height="320" rx="16" ry="16"
+    fill="#ff6bcb" fill-opacity="0.12"/>
+  <rect x="36" y="2252" width="292" height="320" rx="16" ry="16" fill="url(#hatch-6)"/>
+  <text x="54" y="2402.0" fill="#f4f5f7" font-size="26" font-weight="700">Verify</text>
+  <text x="54" y="2432.0" fill="#9aa3b2" font-size="20"><tspan x="54" dy="0">hands-off QA loop</tspan></text>
+  <!-- stronger ByteByteGo dotted connector -->
+  <line x1="338" y1="2412.0" x2="370" y2="2412.0"
+    stroke="#9aa3b2" stroke-width="3.5" stroke-dasharray="4 9" stroke-linecap="round"/>
+  <rect x="380" y="2252" width="664" height="320" rx="18" ry="18"
+    fill="#161922" stroke="#2a2f3a" stroke-width="1.8"/>
+
+  <rect x="403.0" y="2295.0" width="300" height="88" rx="14" ry="14"
+    fill="#0e1118" stroke="#3a4150" stroke-width="1.5"/>
+  <text x="415.0" y="2329.0" fill="#f4f5f7" font-size="24" font-weight="700">QA_EVENT probe</text>
+  <text x="415.0" y="2359.0" fill="#9aa3b2" font-size="20">drops only — not presented</text>
+
+  <rect x="721.0" y="2295.0" width="300" height="88" rx="14" ry="14"
+    fill="#0e1118" stroke="#3a4150" stroke-width="1.5"/>
+  <text x="733.0" y="2329.0" fill="#f4f5f7" font-size="24" font-weight="700">adb broker<tspan fill="#e8c56a" font-size="16" font-weight="600"> · open</tspan></text>
+  <text x="733.0" y="2359.0" fill="#9aa3b2" font-size="20">deny-by-default wrapper</text>
+
+  <image href="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMjA4OEZGIiByb2xlPSJpbWciIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+R2l0SHViIEFjdGlvbnM8L3RpdGxlPjxwYXRoIGQ9Ik0xMC45ODQgMTMuODM2YS41LjUgMCAwIDEtLjM1My0uMTQ2bC0uNzQ1LS43NDNhLjUuNSAwIDEgMSAuNzA2LS43MDhsLjM5Mi4zOTEgMS4xODEtMS4xOGEuNS41IDAgMCAxIC43MDguNzA3bC0xLjUzNSAxLjUzM2EuNTA0LjUwNCAwIDAgMS0uMzU0LjE0NnptOS4zNTMtLjE0N2wxLjUzNC0xLjUzMmEuNS41IDAgMCAwLS43MDctLjcwN2wtMS4xODEgMS4xOC0uMzkyLS4zOTFhLjUuNSAwIDEgMC0uNzA2LjcwOGwuNzQ2Ljc0M2EuNDk3LjQ5NyAwIDAgMCAuNzA2LS4wMDF6TTQuNTI3IDcuNDUybDIuNTU3LTEuNTg1QTEgMSAwIDAgMCA3LjA5IDQuMTdMNC41MzMgMi41NkExIDEgMCAwIDAgMyAzLjQwNnYzLjE5NmExLjAwMSAxLjAwMSAwIDAgMCAxLjUyNy44NXptMi4wMy0yLjQzNkw0IDYuNjAyVjMuNDA2bDIuNTU3IDEuNjF6TTI0IDEyLjVjMCAxLjkzLTEuNTcgMy41LTMuNSAzLjVhMy41MDMgMy41MDMgMCAwIDEtMy40Ni0zaC0yLjA4YTMuNTAzIDMuNTAzIDAgMCAxLTMuNDYgMyAzLjUwMiAzLjUwMiAwIDAgMS0zLjQ2LTNoLS41NThjLS45NzIgMC0xLjg1LS4zOTktMi40ODItMS4wNDJWMTdjMCAxLjY1NCAxLjM0NiAzIDMgM2guMDRjLjI0NC0xLjY5MyAxLjctMyAzLjQ2LTMgMS45MyAwIDMuNSAxLjU3IDMuNSAzLjVTMTMuNDMgMjQgMTEuNSAyNGEzLjUwMiAzLjUwMiAwIDAgMS0zLjQ2LTNIOGMtMi4yMDYgMC00LTEuNzk0LTQtNFY5Ljg5OUE1LjAwOCA1LjAwOCAwIDAgMSAwIDVjMC0yLjc1NyAyLjI0My01IDUtNXM1IDIuMjQzIDUgNWE1LjAwNSA1LjAwNSAwIDAgMS00Ljk1MiA0Ljk5OEEyLjQ4MiAyLjQ4MiAwIDAgMCA3LjQ4MiAxMmguNTU4Yy4yNDQtMS42OTMgMS43LTMgMy40Ni0zYTMuNTAyIDMuNTAyIDAgMCAxIDMuNDYgM2gyLjA4YTMuNTAzIDMuNTAzIDAgMCAxIDMuNDYtM2MxLjkzIDAgMy41IDEuNTcgMy41IDMuNXptLTE1IDhjMCAxLjM3OCAxLjEyMiAyLjUgMi41IDIuNXMyLjUtMS4xMjIgMi41LTIuNS0xLjEyMi0yLjUtMi41LTIuNVM5IDE5LjEyMiA5IDIwLjV6TTUgOWMyLjIwNiAwIDQtMS43OTQgNC00UzcuMjA2IDEgNSAxIDEgMi43OTQgMSA1czEuNzk0IDQgNCA0em05IDMuNWMwLTEuMzc4LTEuMTIyLTIuNS0yLjUtMi41UzkgMTEuMTIyIDkgMTIuNXMxLjEyMiAyLjUgMi41IDIuNSAyLjUtMS4xMjIgMi41LTIuNXptOSAwYzAtMS4zNzgtMS4xMjItMi41LTIuNS0yLjVTMTggMTEuMTIyIDE4IDEyLjVzMS4xMjIgMi41IDIuNSAyLjUgMi41LTEuMTIyIDIuNS0yLjV6bS0xMyA4YS41LjUgMCAxIDAgMSAwIC41LjUgMCAwIDAtMSAwem0yIDBhLjUuNSAwIDEgMCAxIDAgLjUuNSAwIDAgMC0xIDB6bTEyIDBjMCAxLjkzLTEuNTcgMy41LTMuNSAzLjVhMy41MDMgMy41MDMgMCAwIDEtMy40Ni0zLjAwMmMtLjAwNy4wMDEtLjAxMy4wMDUtLjAyMS4wMDVsLS41MDYuMDE3aC0uMDE3YS41LjUgMCAwIDEtLjAxNi0uOTk5bC41MDYtLjAxN2MuMDE4LS4wMDIuMDM1LjAwNi4wNTIuMDA3QTMuNTAzIDMuNTAzIDAgMCAxIDIwLjUgMTdjMS45MyAwIDMuNSAxLjU3IDMuNSAzLjV6bS0xIDBjMC0xLjM3OC0xLjEyMi0yLjUtMi41LTIuNVMxOCAxOS4xMjIgMTggMjAuNXMxLjEyMiAyLjUgMi41IDIuNSAyLjUtMS4xMjIgMi41LTIuNXoiLz48L3N2Zz4=" x="521.0" y="2443.0"
+    width="64" height="64" preserveAspectRatio="xMidYMid meet"/>
+  <text x="553.0" y="2541.0" text-anchor="middle" fill="#f4f5f7"
+    font-size="20" font-weight="700"><tspan x="553.0" dy="0">GitHub Actions</tspan></text>
+
+  <rect x="721.0" y="2441.0" width="300" height="88" rx="14" ry="14"
+    fill="#0e1118" stroke="#3a4150" stroke-width="1.5"/>
+  <text x="733.0" y="2475.0" fill="#f4f5f7" font-size="24" font-weight="700">Pegasus runner</text>
+  <text x="733.0" y="2505.0" fill="#9aa3b2" font-size="20">self-hosted CI</text>
+</g>
+
+<g id="footer" font-family="IBM Plex Sans, Segoe UI, Helvetica Neue, Arial, sans-serif">
+  <rect x="36" y="2604" width="18" height="18" rx="3" fill="none" stroke="#e8c56a" stroke-width="2"/>
+  <text x="66" y="2620" fill="#c4cad6" font-size="22">D26 engine (Blueprint A) lightly pending until ONTOLOGY merge</text>
+  <text x="36" y="2658" fill="#9aa3b2" font-size="20">Text chips where no distinct official product mark ships</text>
+</g>
+</svg>
