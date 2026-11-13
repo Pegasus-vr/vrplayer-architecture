@@ -1,9 +1,9 @@
 # vrplayer architecture
 
-Public C4-style architecture poster for vrplayer (Blueprint A).
+How a VR clip gets to your eyes — Blueprint A story poster.
 
-Primary: container / deployment view (decode · JNI · Unity · compositor).
-Secondary: tech-stack inventory.
+Primary: five-step gold path (file → decode → JNI → place → eyes).
+Secondary: dense C4 container poster + tech-stack inventory.
 
 Site: https://pegasus-vr.github.io/vrplayer-architecture/
 

@@ -32,7 +32,7 @@
       font-size: 14px;
     }
     figure {
-      margin: 0 0 40px;
+      margin: 0 0 28px;
     }
     figcaption {
       margin: 10px 0 0;
@@ -47,30 +47,32 @@
       background: #0f1218;
     }
     a { color: #a8b0bf; }
+    p.more {
+      margin: 0 0 40px;
+      font-size: 13px;
+      color: #7d8798;
+    }
   </style>
 </head>
 <body>
   <main>
-    <h1>vrplayer architecture</h1>
-    <p class="sub">Proposed Blueprint A · Unity shell + Kotlin Media3 over JNI · D26 pending</p>
+    <h1>How a VR clip gets to your eyes</h1>
+    <p class="sub">Blueprint A · Unity shell + Kotlin Media3 over JNI</p>
     <figure>
       <img
-        src="architecture-diagram.png?v=20261112c4"
-        alt="vrplayer C4 container architecture: Quest 3 one-app process with Unity shell, JNI bridge, Kotlin Media3 decode, Horizon OS compositor"
+        src="architecture-diagram.png?v=20261113story"
+        alt="How a VR clip gets to your eyes: five steps from file through Kotlin decode and JNI into Unity, then Meta compositor"
         width="1920"
-        height="1180"
+        height="1080"
       />
-      <figcaption>Primary view · containers, trust boundaries, three flows (video / control / measure)</figcaption>
+      <figcaption>Primary · one gold path, five steps</figcaption>
     </figure>
-    <figure>
-      <img
-        src="tech-stack-diagram.png"
-        alt="vrplayer Blueprint A tech stack (secondary)"
-        width="1080"
-        height="2680"
-      />
-      <figcaption>Secondary · tech stack inventory</figcaption>
-    </figure>
+    <p class="more">
+      Prefer containers and trust boundaries?
+      <a href="architecture-diagram-c4.png?v=20261113story">Detailed C4 poster</a>
+      ·
+      <a href="tech-stack-diagram.png">Tech stack inventory</a>
+    </p>
   </main>
 </body>
 </html>
