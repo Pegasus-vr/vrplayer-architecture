@@ -1,0 +1,411 @@
+#!/usr/bin/env python3
+"""vrplayer · logic / behavior diagram (what the app does).
+
+States, decisions, events under the hood. H0 proposed. Programmatic SVG → PNG.
+"""
+
+from __future__ import annotations
+
+from pathlib import Path
+
+OUT_DIR = Path(__file__).resolve().parent
+OUT_SVG = OUT_DIR / "logic-behavior-diagram.svg"
+OUT_PNG = OUT_DIR / "logic-behavior-diagram.png"
+
+W, H = 1920, 1080
+
+C = {
+    "bg": "#0f1218",
+    "panel": "#171c26",
+    "panel_hi": "#1e2633",
+    "ink": "#f0f3f8",
+    "dim": "#b4bcc9",
+    "muted": "#7d8798",
+    "line": "#3a4456",
+    "gold": "#e2a83a",
+    "gold_dim": "#9a7428",
+    "control": "#3aa0e8",
+    "measure": "#3ccf7a",
+    "warn": "#c97a3a",
+    "error": "#e25a4a",
+    "chip": "#1a1810",
+}
+
+
+def esc(s: str) -> str:
+    return (
+        s.replace("&", "&amp;")
+        .replace("<", "&lt;")
+        .replace(">", "&gt;")
+        .replace('"', "&quot;")
+    )
+
+
+class Svg:
+    def __init__(self) -> None:
+        self.parts: list[str] = []
+
+    def a(self, s: str) -> None:
+        self.parts.append(s)
+
+    def text(
+        self,
+        x: float,
+        y: float,
+        s: str,
+        size: float,
+        fill: str,
+        *,
+        weight: int = 500,
+        anchor: str = "start",
+        mono: bool = False,
+        ls: float | None = None,
+    ) -> None:
+        fam = (
+            "IBM Plex Mono, ui-monospace, Menlo, Consolas, monospace"
+            if mono
+            else "IBM Plex Sans, Segoe UI, Helvetica Neue, Arial, sans-serif"
+        )
+        lsp = f' letter-spacing="{ls}"' if ls is not None else ""
+        self.a(
+            f'<text x="{x:.1f}" y="{y:.1f}" text-anchor="{anchor}" '
+            f'font-family="{fam}" font-size="{size}" font-weight="{weight}" '
+            f'fill="{fill}"{lsp}>{esc(s)}</text>'
+        )
+
+    def rect(
+        self,
+        x: float,
+        y: float,
+        w: float,
+        h: float,
+        *,
+        fill: str = "none",
+        stroke: str | None = None,
+        sw: float = 1.5,
+        rx: float = 12,
+        dash: str | None = None,
+    ) -> None:
+        attrs = [
+            f'x="{x:.1f}"',
+            f'y="{y:.1f}"',
+            f'width="{w:.1f}"',
+            f'height="{h:.1f}"',
+            f'rx="{rx}"',
+            f'fill="{fill}"',
+        ]
+        if stroke:
+            attrs.append(f'stroke="{stroke}"')
+            attrs.append(f'stroke-width="{sw}"')
+        if dash:
+            attrs.append(f'stroke-dasharray="{dash}"')
+        self.a(f'<rect {" ".join(attrs)}/>')
+
+    def circle(
+        self,
+        cx: float,
+        cy: float,
+        r: float,
+        *,
+        fill: str,
+        stroke: str | None = None,
+        sw: float = 2.0,
+    ) -> None:
+        attrs = [f'cx="{cx:.1f}"', f'cy="{cy:.1f}"', f'r="{r:.1f}"', f'fill="{fill}"']
+        if stroke:
+            attrs.append(f'stroke="{stroke}"')
+            attrs.append(f'stroke-width="{sw}"')
+        self.a(f'<circle {" ".join(attrs)}/>')
+
+    def diamond(
+        self,
+        cx: float,
+        cy: float,
+        rw: float,
+        rh: float,
+        *,
+        fill: str,
+        stroke: str,
+        sw: float = 2.0,
+    ) -> None:
+        d = (
+            f"M{cx:.1f} {cy - rh:.1f} L{cx + rw:.1f} {cy:.1f} "
+            f"L{cx:.1f} {cy + rh:.1f} L{cx - rw:.1f} {cy:.1f} Z"
+        )
+        self.a(
+            f'<path d="{d}" fill="{fill}" stroke="{stroke}" stroke-width="{sw}" '
+            f'stroke-linejoin="round"/>'
+        )
+
+    def path(
+        self,
+        d: str,
+        color: str,
+        width: float,
+        *,
+        dash: str | None = None,
+        marker: str | None = None,
+        opacity: float = 1.0,
+    ) -> None:
+        da = f' stroke-dasharray="{dash}"' if dash else ""
+        mk = f' marker-end="url(#{marker})"' if marker else ""
+        op = f' stroke-opacity="{opacity}"' if opacity != 1.0 else ""
+        self.a(
+            f'<path d="{d}" fill="none" stroke="{color}" stroke-width="{width}" '
+            f'stroke-linecap="round" stroke-linejoin="round"{da}{mk}{op}/>'
+        )
+
+
+def state_box(
+    s: Svg,
+    x: float,
+    y: float,
+    w: float,
+    h: float,
+    num: int,
+    title: str,
+    lines: list[str],
+    *,
+    accent: str,
+) -> tuple[float, float, float, float]:
+    """Returns left, right, cy, cx."""
+    s.rect(x, y, w, h, fill=C["panel"], stroke=accent, sw=2.2, rx=14)
+    s.circle(x + 28, y + 28, 16, fill=C["chip"], stroke=accent, sw=1.8)
+    s.text(x + 28, y + 34, str(num), 16, accent, weight=700, anchor="middle")
+    s.text(x + 52, y + 34, title, 18, C["ink"], weight=700)
+    ty = y + 64
+    for line in lines:
+        s.text(x + 18, ty, line, 13, C["dim"], weight=500, mono=True)
+        ty += 22
+    return x, x + w, y + h / 2, x + w / 2
+
+
+def build() -> None:
+    s = Svg()
+    a = s.a
+
+    a(
+        f'''<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}"
+  role="img" aria-label="Logic and behavior: app states, decisions, and events">
+<title>Logic / behavior · what the app does</title>
+<defs>
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity="0.025" stroke-width="1"/>
+  </pattern>
+  <marker id="mg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M0 0 10 5 0 10z" fill="{C["gold"]}"/>
+  </marker>
+  <marker id="mc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+    <path d="M0 0 10 5 0 10z" fill="{C["control"]}"/>
+  </marker>
+  <marker id="mm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+    <path d="M0 0 10 5 0 10z" fill="{C["measure"]}"/>
+  </marker>
+  <marker id="me" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+    <path d="M0 0 10 5 0 10z" fill="{C["error"]}"/>
+  </marker>
+</defs>
+'''
+    )
+    s.rect(0, 0, W, H, fill=C["bg"], rx=0)
+    a(f'<rect width="{W}" height="{H}" fill="url(#grid)"/>')
+
+    s.text(56, 52, "LOGIC / BEHAVIOR · WHAT THE APP DOES", 34, C["ink"], weight=700, ls=-0.4)
+    s.text(
+        56,
+        88,
+        "States · decisions · events  ·  Blueprint A under the hood  ·  proposed / H0",
+        18,
+        C["dim"],
+        weight=500,
+    )
+    s.rect(1480, 36, 380, 36, fill=C["chip"], stroke=C["warn"], sw=1.4, rx=6, dash="4 3")
+    s.text(
+        1670,
+        60,
+        "PROBE ≠ COMPOSITOR FRAME",
+        13,
+        C["warn"],
+        weight=700,
+        anchor="middle",
+        mono=True,
+        ls=0.5,
+    )
+
+    # ---- Main state row ----
+    margin_x = 40
+    gap = 18
+    n = 6
+    usable = W - 2 * margin_x - (n - 1) * gap
+    box_w = usable / n
+    box_h = 150
+    box_y = 130
+    spine_y = box_y + box_h / 2
+
+    states = [
+        ("Idle", ["await intent", "no live session"], C["muted"]),
+        ("Resolve source", ["local URI / home", "identity + proj."], C["gold"]),
+        ("Decoding", ["Media3 prepare", "HW MediaCodec"], C["gold"]),
+        ("Surface ready", ["lease to decoder", "JNI surface"], C["control"]),
+        ("Presenting", ["direct layer / mesh", "frames to eyes"], C["gold"]),
+        ("Measuring", ["QA_EVENT probe", "first + dropped"], C["measure"]),
+    ]
+
+    centers: list[tuple[float, float, float, float]] = []
+    for i, (title, lines, accent) in enumerate(states):
+        x = margin_x + i * (box_w + gap)
+        centers.append(state_box(s, x, box_y, box_w, box_h, i + 1, title, lines, accent=accent))
+
+    for i in range(n - 1):
+        x0 = centers[i][1] + 2
+        x1 = centers[i + 1][0] - 2
+        color = C["measure"] if i == 4 else (C["control"] if i == 2 else C["gold"])
+        marker = "mm" if i == 4 else ("mc" if i == 2 else "mg")
+        s.path(f"M{x0:.1f} {spine_y:.1f} H{x1:.1f}", color, 3.5, marker=marker)
+
+    # ---- Decision diamonds row ----
+    dec_y = box_y + box_h + 90
+    s.text(56, dec_y - 36, "DECISIONS", 13, C["muted"], weight=700, mono=True, ls=1.2)
+
+    # Decision 1: local vs home
+    d1x, d1y = 280, dec_y + 40
+    s.diamond(d1x, d1y, 110, 48, fill=C["panel"], stroke=C["gold"], sw=2.0)
+    s.text(d1x, d1y - 6, "Local or", 15, C["ink"], weight=700, anchor="middle")
+    s.text(d1x, d1y + 16, "home?", 15, C["ink"], weight=700, anchor="middle")
+    s.text(d1x - 150, d1y + 6, "local URI", 13, C["dim"], weight=500, mono=True, anchor="end")
+    s.text(d1x + 150, d1y + 6, "HTTP range", 13, C["dim"], weight=500, mono=True)
+    s.path(f"M{d1x - 110:.1f} {d1y:.1f} H{d1x - 155:.1f}", C["gold"], 2.0)
+    s.path(f"M{d1x + 110:.1f} {d1y:.1f} H{d1x + 145:.1f}", C["gold"], 2.0, marker="mg")
+    s.text(d1x, d1y + 72, "feeds Resolve source", 12, C["muted"], weight=500, anchor="middle", mono=True)
+
+    # Decision 2: direct vs mesh
+    d2x, d2y = 820, dec_y + 40
+    s.diamond(d2x, d2y, 110, 48, fill=C["panel"], stroke=C["warn"], sw=2.0)
+    s.text(d2x, d2y - 6, "Direct or", 15, C["ink"], weight=700, anchor="middle")
+    s.text(d2x, d2y + 16, "mesh?", 15, C["ink"], weight=700, anchor="middle")
+    s.text(d2x - 155, d2y + 6, "180 / 360 layer", 13, C["dim"], weight=500, mono=True, anchor="end")
+    s.text(d2x + 155, d2y + 6, "fisheye mesh", 13, C["warn"], weight=500, mono=True)
+    s.path(f"M{d2x - 110:.1f} {d2y:.1f} H{d2x - 160:.1f}", C["gold"], 2.0)
+    s.path(f"M{d2x + 110:.1f} {d2y:.1f} H{d2x + 150:.1f}", C["warn"], 2.0, dash="4 3", marker="mg")
+    s.text(
+        d2x,
+        d2y + 72,
+        "resolver pick · mesh = H1 / least proven",
+        12,
+        C["warn"],
+        weight=500,
+        anchor="middle",
+        mono=True,
+    )
+
+    # Decision 3: error recover
+    d3x, d3y = 1400, dec_y + 40
+    s.diamond(d3x, d3y, 110, 48, fill=C["panel"], stroke=C["error"], sw=2.0)
+    s.text(d3x, d3y - 6, "Error /", 15, C["ink"], weight=700, anchor="middle")
+    s.text(d3x, d3y + 16, "recover?", 15, C["ink"], weight=700, anchor="middle")
+    s.text(d3x - 150, d3y + 6, "reopen <=3x", 13, C["dim"], weight=500, mono=True, anchor="end")
+    s.text(d3x + 150, d3y + 6, "plain reason", 13, C["error"], weight=500, mono=True)
+    s.path(f"M{d3x - 110:.1f} {d3y:.1f} H{d3x - 155:.1f}", C["error"], 2.0)
+    s.path(f"M{d3x + 110:.1f} {d3y:.1f} H{d3x + 145:.1f}", C["error"], 2.0, marker="me")
+    s.text(
+        d3x,
+        d3y + 72,
+        "never 'playing' over black",
+        12,
+        C["muted"],
+        weight=500,
+        anchor="middle",
+        mono=True,
+    )
+
+    # Arrow from Presenting down to error diamond (conceptual)
+    s.path(
+        f"M{centers[4][3]:.1f} {box_y + box_h + 4:.1f} V{dec_y - 8:.1f}",
+        C["line"],
+        1.5,
+        dash="3 4",
+        opacity=0.7,
+    )
+
+    # ---- JNI + probe strip ----
+    strip_y = dec_y + 130
+    s.rect(48, strip_y, 900, 100, fill=C["panel_hi"], stroke=C["control"], sw=1.6, rx=10)
+    s.text(68, strip_y + 28, "JNI SEAM · events that cross", 14, C["control"], weight=700, mono=True, ls=0.5)
+    s.text(
+        68,
+        strip_y + 56,
+        "cmds · SurfaceTexture / surface lease · playback state + epochs",
+        14,
+        C["dim"],
+        weight=500,
+        mono=True,
+    )
+    s.text(
+        68,
+        strip_y + 80,
+        "Unity shell  ←→  Kotlin Media3 core   ·   one seam (AndroidJavaProxy)",
+        14,
+        C["dim"],
+        weight=500,
+        mono=True,
+    )
+
+    s.rect(972, strip_y, 900, 100, fill=C["panel_hi"], stroke=C["measure"], sw=1.6, rx=10)
+    s.text(992, strip_y + 28, "PROBE · QA_EVENT stream", 14, C["measure"], weight=700, mono=True, ls=0.5)
+    s.text(
+        992,
+        strip_y + 56,
+        "first frame · decoder dropped frames · build identity",
+        14,
+        C["dim"],
+        weight=500,
+        mono=True,
+    )
+    s.text(
+        992,
+        strip_y + 80,
+        "Leaves app → verification bench  ·  never from Meta compositor",
+        14,
+        C["warn"],
+        weight=500,
+        mono=True,
+    )
+
+    # Footer
+    s.path(f"M56 {H - 56} H{W - 56}", C["line"], 1.0, opacity=0.6)
+    s.text(
+        56,
+        H - 28,
+        "App behavior · proposed / H0  ·  idle → resolve → decode → surface → present → measure",
+        14,
+        C["muted"],
+        mono=True,
+    )
+    s.text(
+        W - 56,
+        H - 28,
+        "presented-frame method still open",
+        14,
+        C["warn"],
+        anchor="end",
+        mono=True,
+    )
+
+    a("</svg>\n")
+    OUT_SVG.write_text("".join(s.parts), encoding="utf-8")
+    print(f"Wrote {OUT_SVG} ({OUT_SVG.stat().st_size} bytes)")
+
+    import cairosvg
+
+    cairosvg.svg2png(
+        url=str(OUT_SVG),
+        write_to=str(OUT_PNG),
+        output_width=W * 2,
+        output_height=H * 2,
+    )
+    print(f"Wrote {OUT_PNG} ({OUT_PNG.stat().st_size} bytes)")
+
+
+if __name__ == "__main__":
+    build()

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>vrplayer architecture</title>
+  <title>vrplayer · user flow &amp; logic</title>
   <style>
     :root { color-scheme: dark; }
     * { box-sizing: border-box; }
@@ -31,9 +31,39 @@
       color: #7d8798;
       font-size: 14px;
     }
-    figure {
+    nav.tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 24px;
+    }
+    nav.tabs a {
+      display: inline-block;
+      padding: 8px 14px;
+      border: 1px solid #3a4456;
+      border-radius: 8px;
+      color: #b4bcc9;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    nav.tabs a:hover { border-color: #e2a83a; color: #e8edf5; }
+    nav.tabs a.active {
+      border-color: #e2a83a;
+      color: #e2a83a;
+      background: #1a1810;
+    }
+    nav.tabs a.secondary {
+      border-style: dashed;
+      color: #7d8798;
+      font-weight: 500;
+    }
+    section {
+      display: none;
       margin: 0 0 28px;
     }
+    section.active { display: block; }
+    figure { margin: 0; }
     figcaption {
       margin: 10px 0 0;
       font-size: 13px;
@@ -46,33 +76,95 @@
       border: 0;
       background: #0f1218;
     }
-    a { color: #a8b0bf; }
     p.more {
-      margin: 0 0 40px;
+      margin: 16px 0 0;
       font-size: 13px;
       color: #7d8798;
     }
+    a { color: #a8b0bf; }
   </style>
 </head>
 <body>
   <main>
-    <h1>How a VR clip gets to your eyes</h1>
-    <p class="sub">Blueprint A · Unity shell + Kotlin Media3 over JNI</p>
-    <figure>
-      <img
-        src="architecture-diagram.png?v=20261113story"
-        alt="How a VR clip gets to your eyes: five steps from file through Kotlin decode and JNI into Unity, then Meta compositor"
-        width="1920"
-        height="1080"
-      />
-      <figcaption>Primary · one gold path, five steps</figcaption>
-    </figure>
-    <p class="more">
-      Prefer containers and trust boundaries?
-      <a href="architecture-diagram-c4.png?v=20261113story">Detailed C4 poster</a>
-      ·
-      <a href="tech-stack-diagram.png">Tech stack inventory</a>
-    </p>
+    <h1>vrplayer</h1>
+    <p class="sub">Proposed / H0 · Blueprint A · Unity shell + Kotlin Media3 over JNI</p>
+
+    <nav class="tabs" aria-label="Views">
+      <a href="#user-flow" class="active" data-tab="user-flow">User flow</a>
+      <a href="#logic" data-tab="logic">Logic / behavior</a>
+      <a href="#clip-eyes" class="secondary" data-tab="clip-eyes">How a clip gets to your eyes</a>
+    </nav>
+
+    <section id="user-flow" class="active">
+      <figure>
+        <img
+          src="user-flow-diagram.png?v=20261113uf1"
+          alt="User flow: open app, pick source, start clip, watch and control, exit or next"
+          width="1920"
+          height="1080"
+        />
+        <figcaption>What the Quest wearer does · human verbs · controllers-first (P4)</figcaption>
+      </figure>
+    </section>
+
+    <section id="logic">
+      <figure>
+        <img
+          src="logic-behavior-diagram.png?v=20261113lb1"
+          alt="Logic and behavior: idle through resolve, decode, surface, present, measure; decisions and JNI probe"
+          width="1920"
+          height="1080"
+        />
+        <figcaption>What the app does · states, decisions, events · probe ≠ compositor frame</figcaption>
+      </figure>
+    </section>
+
+    <section id="clip-eyes">
+      <figure>
+        <img
+          src="architecture-diagram.png?v=20261113eng"
+          alt="How a VR clip gets to your eyes: five steps from file through Kotlin decode and JNI into Unity, then Meta compositor"
+          width="1920"
+          height="1080"
+        />
+        <figcaption>Pipeline story · file → decode → JNI → place → eyes</figcaption>
+      </figure>
+      <p class="more">
+        Prefer containers and trust boundaries?
+        <a href="architecture-diagram-c4.png?v=20261113eng">Detailed C4 poster</a>
+        ·
+        <a href="tech-stack-diagram.png">Tech stack inventory</a>
+      </p>
+    </section>
   </main>
+  <script>
+    (function () {
+      var tabs = document.querySelectorAll("nav.tabs a[data-tab]");
+      var sections = {
+        "user-flow": document.getElementById("user-flow"),
+        "logic": document.getElementById("logic"),
+        "clip-eyes": document.getElementById("clip-eyes")
+      };
+      function show(id) {
+        if (!sections[id]) id = "user-flow";
+        Object.keys(sections).forEach(function (k) {
+          sections[k].classList.toggle("active", k === id);
+        });
+        tabs.forEach(function (a) {
+          a.classList.toggle("active", a.getAttribute("data-tab") === id);
+        });
+      }
+      tabs.forEach(function (a) {
+        a.addEventListener("click", function (e) {
+          e.preventDefault();
+          var id = a.getAttribute("data-tab");
+          history.replaceState(null, "", "#" + id);
+          show(id);
+        });
+      });
+      var hash = (location.hash || "#user-flow").slice(1);
+      show(hash);
+    })();
+  </script>
 </body>
 </html>
